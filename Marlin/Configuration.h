@@ -128,12 +128,12 @@
 // #define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-// #define CUSTOM_MACHINE_NAME "3D Printer"
-// #define CONFIGURABLE_MACHINE_NAME // Add G-code M550 to set/report the machine name
+#define CUSTOM_MACHINE_NAME "MKS Monster8" // TT
+// #define CONFIGURABLE_MACHINE_NAME       // Add G-code M550 to set/report the machine name
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
-// #define MACHINE_UUID "00000000-0000-0000-0000-000000000000"
+#define MACHINE_UUID "a06a2977-9df5-4814-952c-1e6fb7d3ecee" // TT
 
 // @section stepper drivers
 
@@ -152,21 +152,21 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC2240', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE TMC2209
-#define Y_DRIVER_TYPE TMC2209
-#define Z_DRIVER_TYPE TMC2209
+#define X_DRIVER_TYPE TMC2209 // TT
+#define Y_DRIVER_TYPE TMC2209 // TT
+#define Z_DRIVER_TYPE TMC2209 // TT
 // #define X2_DRIVER_TYPE A4988
-#define Y2_DRIVER_TYPE TMC2209
-#define Z2_DRIVER_TYPE TMC2209
-#define Z3_DRIVER_TYPE TMC2209
-#define Z4_DRIVER_TYPE TMC2209
+#define Y2_DRIVER_TYPE TMC2209 // TT
+#define Z2_DRIVER_TYPE TMC2209 // TT
+#define Z3_DRIVER_TYPE TMC2209 // TT
+#define Z4_DRIVER_TYPE TMC2209 // TT
 // #define I_DRIVER_TYPE  A4988
 // #define J_DRIVER_TYPE  A4988
 // #define K_DRIVER_TYPE  A4988
 // #define U_DRIVER_TYPE  A4988
 // #define V_DRIVER_TYPE  A4988
 // #define W_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE TMC2209
+#define E0_DRIVER_TYPE TMC2209 // TT
 // #define E1_DRIVER_TYPE A4988
 // #define E2_DRIVER_TYPE A4988
 // #define E3_DRIVER_TYPE A4988
@@ -909,8 +909,8 @@
 #define PID_FUNCTIONAL_RANGE 20 // If the temperature difference between the target temperature and the actual temperature
                                 // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
-// #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
-// #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
+#define PID_EDIT_MENU     // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
+#define PID_AUTOTUNE_MENU // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
 #endif
 
 // @section safety
@@ -1300,7 +1300,7 @@
  * Override with M92 (when enabled below)
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT {80, 80, 400, 500}
+#define DEFAULT_AXIS_STEPS_PER_UNIT {320, 320, 160, 500} // TT
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1312,7 +1312,7 @@
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE {300, 300, 5, 25}
+#define DEFAULT_MAX_FEEDRATE {300, 300, 5, 25} // TT
 
 // #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1325,7 +1325,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION {3000, 3000, 100, 10000}
+#define DEFAULT_MAX_ACCELERATION {16000, 16000, 1600, 10000} // TT
 
 // #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1410,10 +1410,10 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN // TT
 
 // Force the use of the probe for Z-axis homing
-// #define USE_PROBE_FOR_Z_HOMING
+#define USE_PROBE_FOR_Z_HOMING // TT
 
 /**
  * Z_MIN_PROBE_PIN
@@ -1442,7 +1442,7 @@
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-// #define PROBE_MANUALLY
+#define PROBE_MANUALLY // TT
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
@@ -1470,7 +1470,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-#define BLTOUCH
+// #define BLTOUCH // TT
 
 /**
  * MagLev V4 probe by MDD
@@ -1713,7 +1713,7 @@
  * Probe Enable / Disable
  * The probe only provides a triggered signal when enabled.
  */
-// #define PROBE_ENABLE_DISABLE
+#define PROBE_ENABLE_DISABLE // TT
 #if ENABLED(PROBE_ENABLE_DISABLE)
 // #define PROBE_ENABLE_PIN -1   // Override the default pin here
 #endif
@@ -1903,8 +1903,8 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 300 // TT
+#define Y_BED_SIZE 300 // TT
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1987,8 +1987,8 @@
 #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
 #define NUM_RUNOUT_SENSORS 1            // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
-#define FIL_RUNOUT_STATE HIGH // Pin state indicating that filament is NOT present.
-#define FIL_RUNOUT_PULLUP     // Use internal pullup for filament runout pins.
+#define FIL_RUNOUT_STATE LOW // Pin state indicating that filament is NOT present.
+#define FIL_RUNOUT_PULLUP    // Use internal pullup for filament runout pins.
 // #define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
 // #define WATCH_ALL_RUNOUT_SENSORS      // Execute runout script on any triggering sensor, not only for the active extruder.
 //  This is automatically enabled for MIXING_EXTRUDERs.
@@ -2034,7 +2034,7 @@
 // After a runout is detected, continue printing this length of filament
 // before executing the runout script. Useful for a sensor at the end of
 // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
-// #define FILAMENT_RUNOUT_DISTANCE_MM 25
+#define FILAMENT_RUNOUT_DISTANCE_MM 25
 
 #ifdef FILAMENT_RUNOUT_DISTANCE_MM
 // Enable this option to use an encoder disc that toggles the runout pin
@@ -2128,7 +2128,7 @@
  */
 // #define AUTO_BED_LEVELING_3POINT
 // #define AUTO_BED_LEVELING_LINEAR
-// #define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR // TT
 // #define AUTO_BED_LEVELING_UBL
 // #define MESH_BED_LEVELING
 
@@ -2211,7 +2211,7 @@
 #if ANY(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
 // Set the number of grid points per dimension.
-#define GRID_MAX_POINTS_X 3
+#define GRID_MAX_POINTS_X 4 // TT
 #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
 // Probe along the Y axis, advancing X after each column
@@ -2364,7 +2364,7 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-// #define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
 #define Z_SAFE_HOMING_X_POINT X_CENTER // (mm) X point for Z homing
@@ -2663,9 +2663,9 @@
  *
  * View the current statistics with M78.
  */
-#define PRINTCOUNTER
+#define PRINTCOUNTER // TT
 #if ENABLED(PRINTCOUNTER)
-#define PRINTCOUNTER_SAVE_INTERVAL 60 // (minutes) EEPROM save interval during print. A value of 0 will save stats at end of print.
+#define PRINTCOUNTER_SAVE_INTERVAL 0 // TT (minutes) EEPROM save interval during print. A value of 0 will save stats at end of print.
 #endif
 
 // @section security
@@ -2709,7 +2709,7 @@
  * SD Card support is disabled by default. If your controller has an SD slot,
  * you must uncomment the following option or it won't work.
  */
-#define SDSUPPORT
+#define SDSUPPORT // TT
 
 /**
  * SD CARD: ENABLE CRC
@@ -2717,7 +2717,7 @@
  * Use CRC checks and retries on the SD communication.
  */
 #if ENABLED(SDSUPPORT)
-// #define SD_CHECK_AND_RETRY
+#define SD_CHECK_AND_RETRY // TT
 #endif
 
 // @section interface
@@ -2836,7 +2836,7 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-// #define INDIVIDUAL_AXIS_HOMING_MENU
+#define INDIVIDUAL_AXIS_HOMING_MENU
 // #define INDIVIDUAL_AXIS_HOMING_SUBMENU
 
 //
@@ -2845,7 +2845,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-// #define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
@@ -2867,7 +2867,7 @@
 // A sequence of tones to play at startup, in pairs of tone (Hz), duration (ms).
 // Silence in-between tones.
 //
-// #define STARTUP_TUNE { 698, 300, 0, 50, 523, 50, 0, 25, 494, 50, 0, 25, 523, 100, 0, 50, 554, 300, 0, 100, 523, 300 }
+#define STARTUP_TUNE {698, 300, 0, 50, 523, 50, 0, 25, 494, 50, 0, 25, 523, 100, 0, 50, 554, 300, 0, 100, 523, 300}
 
 //=============================================================================
 //======================== LCD / Controller Selection =========================
@@ -3117,7 +3117,7 @@
 //
 // MKS MINI12864 V3 is an alias for FYSETC_MINI_12864_2_1. Type A/B. NeoPixel RGB Backlight.
 //
-#define MKS_MINI_12864_V3
+#define MKS_MINI_12864_V3 // TT
 
 //
 // MKS LCD12864A/B with graphic controller and SD support. Follows MKS_MINI_12864 pinout.
@@ -3766,6 +3766,6 @@
 #define Z4_SERIAL_TX_PIN E4_SERIAL_TX_PIN
 #define Z4_SERIAL_RX_PIN E4_SERIAL_RX_PIN
 
+#if SPINDLE_FEATURE
 #define SPINDLE_LASER_PWM_PIN PA1
-
-#define Z_SAFE_HOMING
+#endif

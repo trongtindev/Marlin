@@ -551,7 +551,7 @@
  * Hotend Idle Timeout
  * Prevent filament in the nozzle from charring and causing a critical jam.
  */
-// #define HOTEND_IDLE_TIMEOUT
+#define HOTEND_IDLE_TIMEOUT
 #if ENABLED(HOTEND_IDLE_TIMEOUT)
 #define HOTEND_IDLE_TIMEOUT_SEC (5 * 60) // (seconds) Time without extruder movement to trigger protection
 #define HOTEND_IDLE_MIN_TRIGGER 180      // (°C) Minimum temperature to enable hotend protection
@@ -1973,11 +1973,11 @@
 // #define CONFIGURATION_EMBEDDING
 
 // Add an optimized binary file transfer mode, initiated with 'M28 B1'
-// #define BINARY_FILE_TRANSFER
+#define BINARY_FILE_TRANSFER
 
 #if ENABLED(BINARY_FILE_TRANSFER)
 // Include extra facilities (e.g., 'M20 F') supporting firmware upload via BINARY_FILE_TRANSFER
-// #define CUSTOM_FIRMWARE_UPLOAD
+#define CUSTOM_FIRMWARE_UPLOAD
 #endif
 
 // "Over-the-air" Firmware Update with M936 - Required to set EEPROM flag
@@ -2294,7 +2294,7 @@
  * Display Sleep
  * Enable this option to save energy and prevent OLED pixel burn-in.
  */
-// #define DISPLAY_SLEEP_MINUTES 2       // (minutes) Timeout before turning off the screen
+// #define DISPLAY_SLEEP_MINUTES 1 // (minutes) Timeout before turning off the screen
 
 /**
  * LCD Backlight Timeout
@@ -3392,15 +3392,15 @@
  * When disabled, Marlin will use spreadCycle stepping mode.
  */
 #if HAS_STEALTHCHOP
-#define STEALTHCHOP_XY
-#define STEALTHCHOP_Z
-#define STEALTHCHOP_I
-#define STEALTHCHOP_J
-#define STEALTHCHOP_K
-#define STEALTHCHOP_U
-#define STEALTHCHOP_V
-#define STEALTHCHOP_W
-#define STEALTHCHOP_E
+// #define STEALTHCHOP_XY // TT
+// #define STEALTHCHOP_Z
+// #define STEALTHCHOP_I
+// #define STEALTHCHOP_J
+// #define STEALTHCHOP_K
+// #define STEALTHCHOP_U
+// #define STEALTHCHOP_V
+// #define STEALTHCHOP_W
+// #define STEALTHCHOP_E
 #endif
 
 /**
@@ -3688,12 +3688,14 @@
  *
  * See https://marlinfw.org/docs/configuration/2.0.9/laser_spindle.html for more config details.
  */
-#define SPINDLE_FEATURE
+// #define SPINDLE_FEATURE
 // #define LASER_FEATURE
 #if ANY(SPINDLE_FEATURE, LASER_FEATURE)
 #define SPINDLE_LASER_ACTIVE_STATE HIGH // Set to "HIGH" if SPINDLE_LASER_ENA_PIN is active HIGH
 
+#if SPINDLE_FEATURE || LASER_FEATURE
 #define SPINDLE_LASER_USE_PWM // Enable if your controller supports setting the speed/power
+#endif
 #if ENABLED(SPINDLE_LASER_USE_PWM)
 #define SPINDLE_LASER_PWM_INVERT false // Set to "true" if the speed/power goes up when you want it to go slower
 #define SPINDLE_LASER_FREQUENCY 2500   // (Hz) Spindle/laser frequency (only on supported HALs: AVR, ESP32, and LPC)
@@ -4111,7 +4113,7 @@
  * Add G-codes M810-M819 to define and run G-code macros.
  * Macros are not saved to EEPROM.
  */
-// #define GCODE_MACROS
+#define GCODE_MACROS
 #if ENABLED(GCODE_MACROS)
 #define GCODE_MACROS_SLOTS 5      // Up to 10 may be used
 #define GCODE_MACROS_SLOT_SIZE 50 // Maximum length of a single macro
