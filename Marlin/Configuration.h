@@ -156,7 +156,7 @@
 #define Y_DRIVER_TYPE TMC2209 // TT
 #define Z_DRIVER_TYPE TMC2209 // TT
 // #define X2_DRIVER_TYPE A4988
-#define Y2_DRIVER_TYPE TMC2209 // TT
+// #define Y2_DRIVER_TYPE A4988
 #define Z2_DRIVER_TYPE TMC2209 // TT
 #define Z3_DRIVER_TYPE TMC2209 // TT
 #define Z4_DRIVER_TYPE TMC2209 // TT
@@ -568,7 +568,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 5 // TT
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -576,7 +576,7 @@
 #define TEMP_SENSOR_5 0
 #define TEMP_SENSOR_6 0
 #define TEMP_SENSOR_7 0
-#define TEMP_SENSOR_BED 1
+#define TEMP_SENSOR_BED 5 // TT
 #define TEMP_SENSOR_PROBE 0
 #define TEMP_SENSOR_CHAMBER 0
 #define TEMP_SENSOR_COOLER 0
@@ -1300,7 +1300,7 @@
  * Override with M92 (when enabled below)
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT {320, 320, 160, 500} // TT
+#define DEFAULT_AXIS_STEPS_PER_UNIT {80, 80, 1600, 500} // TT
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1312,11 +1312,11 @@
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE {300, 300, 5, 25} // TT
+#define DEFAULT_MAX_FEEDRATE {80, 80, 1600, 25} // TT
 
-// #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
+#define LIMITED_MAX_FR_EDITING // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-#define MAX_FEEDRATE_EDIT_VALUES {600, 600, 10, 50} // ...or, set your own edit limits
+// #define MAX_FEEDRATE_EDIT_VALUES {160, 160, 800, 25} // TT ...or, set your own edit limits
 #endif
 
 /**
@@ -1325,11 +1325,11 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION {16000, 16000, 1600, 10000} // TT
+#define DEFAULT_MAX_ACCELERATION {20000, 20000, 80000, 10000} // TT
 
-// #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
+#define LIMITED_MAX_ACCEL_EDITING // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-#define MAX_ACCEL_EDIT_VALUES {6000, 6000, 200, 20000} // ...or, set your own edit limits
+// #define MAX_ACCEL_EDIT_VALUES {6000, 6000, 200, 20000} // TT ...or, set your own edit limits
 #endif
 
 /**
@@ -1832,8 +1832,8 @@
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
-#define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#define INVERT_Y_DIR false // TT
+#define INVERT_Z_DIR true  // TT
 // #define INVERT_I_DIR false
 // #define INVERT_J_DIR false
 // #define INVERT_K_DIR false
@@ -2376,7 +2376,7 @@
 #define HOMING_FEEDRATE_MM_M {(50 * 60), (50 * 60), (4 * 60)}
 
 // Edit homing feedrates with M210 and MarlinUI menu items
-// #define EDITABLE_HOMING_FEEDRATE
+#define EDITABLE_HOMING_FEEDRATE
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -3680,7 +3680,7 @@
 // #define NEOPIXEL2_PIN               5
 #define NEOPIXEL_PIXELS 30      // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
 #define NEOPIXEL_IS_SEQUENTIAL  // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-#define NEOPIXEL_BRIGHTNESS 127 // Initial brightness (0-255)
+#define NEOPIXEL_BRIGHTNESS 255 // TT Initial brightness (0-255)
 // #define NEOPIXEL_STARTUP_TEST         // Cycle through colors at startup
 
 // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
@@ -3741,30 +3741,6 @@
 
 // Disable servo with M282 to reduce power consumption, noise, and heat when not in use
 // #define SERVO_DETACH_GCODE
-
-#define Y2_ENABLE_PIN E1_ENABLE_PIN
-#define Y2_STEP_PIN E1_STEP_PIN
-#define Y2_DIR_PIN E1_DIR_PIN
-#define Y2_SERIAL_TX_PIN E1_SERIAL_TX_PIN
-#define Y2_SERIAL_RX_PIN E1_SERIAL_RX_PIN
-
-#define Z2_ENABLE_PIN E2_ENABLE_PIN
-#define Z2_STEP_PIN E2_STEP_PIN
-#define Z2_DIR_PIN E2_DIR_PIN
-#define Z2_SERIAL_TX_PIN E2_SERIAL_TX_PIN
-#define Z2_SERIAL_RX_PIN E2_SERIAL_RX_PIN
-
-#define Z3_ENABLE_PIN E3_ENABLE_PIN
-#define Z3_STEP_PIN E3_STEP_PIN
-#define Z3_DIR_PIN E3_DIR_PIN
-#define Z3_SERIAL_TX_PIN E3_SERIAL_TX_PIN
-#define Z3_SERIAL_RX_PIN E3_SERIAL_RX_PIN
-
-#define Z4_ENABLE_PIN E4_ENABLE_PIN
-#define Z4_STEP_PIN E4_STEP_PIN
-#define Z4_DIR_PIN E4_DIR_PIN
-#define Z4_SERIAL_TX_PIN E4_SERIAL_TX_PIN
-#define Z4_SERIAL_RX_PIN E4_SERIAL_RX_PIN
 
 #if SPINDLE_FEATURE
 #define SPINDLE_LASER_PWM_PIN PA1

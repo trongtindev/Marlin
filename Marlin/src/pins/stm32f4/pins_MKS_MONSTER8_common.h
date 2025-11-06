@@ -94,52 +94,52 @@
 #define X_CS_PIN PE6
 #endif
 
-#define Y_ENABLE_PIN PC15 // Driver1
-#define Y_STEP_PIN PE5
-#define Y_DIR_PIN PE4
-#ifndef Y_CS_PIN
-#define Y_CS_PIN PE3
-#endif
-
-#define Z_ENABLE_PIN PE2 // Driver2
-#define Z_STEP_PIN PE1
-#define Z_DIR_PIN PE0
+#define Z_ENABLE_PIN PC15 // Driver1
+#define Z_STEP_PIN PE5
+#define Z_DIR_PIN PE4
 #ifndef Z_CS_PIN
-#define Z_CS_PIN PB7
+#define Z_CS_PIN PE3
 #endif
 
-#define E0_ENABLE_PIN PB6 // Driver3
-#define E0_STEP_PIN PB5
-#define E0_DIR_PIN PB4
+#define Y_ENABLE_PIN PE2 // Driver2
+#define Y_STEP_PIN PE1
+#define Y_DIR_PIN PE0
+#ifndef Y_CS_PIN
+#define Y_CS_PIN PB7
+#endif
+
+#define Z2_ENABLE_PIN PB6 // Driver3
+#define Z2_STEP_PIN PB5
+#define Z2_DIR_PIN PB4
+#ifndef Z2_CS_PIN
+#define Z2_CS_PIN PB3
+#endif
+
+#define Z3_ENABLE_PIN PD7 // Driver4
+#define Z3_STEP_PIN PD6
+#define Z3_DIR_PIN PD5
+#ifndef Z3_CS_PIN
+#define Z3_CS_PIN PD4
+#endif
+
+#define Z4_ENABLE_PIN PD3 // Driver5
+#define Z4_STEP_PIN PD2
+#define Z4_DIR_PIN PD1
+#ifndef Z4_CS_PIN
+#define Z4_CS_PIN PD0
+#endif
+
+#define E0_ENABLE_PIN PC8 // Driver6
+#define E0_STEP_PIN PC7
+#define E0_DIR_PIN PC6
 #ifndef E0_CS_PIN
-#define E0_CS_PIN PB3
+#define E0_CS_PIN PD15
 #endif
 
-#define E1_ENABLE_PIN PD7 // Driver4
-#define E1_STEP_PIN PD6
-#define E1_DIR_PIN PD5
+#define E1_STEP_PIN PD13 // Driver7
+#define E1_DIR_PIN PD12
 #ifndef E1_CS_PIN
-#define E1_CS_PIN PD4
-#endif
-
-#define E2_ENABLE_PIN PD3 // Driver5
-#define E2_STEP_PIN PD2
-#define E2_DIR_PIN PD1
-#ifndef E2_CS_PIN
-#define E2_CS_PIN PD0
-#endif
-
-#define E3_ENABLE_PIN PC8 // Driver6
-#define E3_STEP_PIN PC7
-#define E3_DIR_PIN PC6
-#ifndef E3_CS_PIN
-#define E3_CS_PIN PD15
-#endif
-
-#define E4_STEP_PIN PD13 // Driver7
-#define E4_DIR_PIN PD12
-#ifndef E4_CS_PIN
-#define E4_CS_PIN PD11
+#define E1_CS_PIN PD11
 #endif
 
 //
@@ -168,13 +168,13 @@
 // No Hardware serial for steppers
 //
 #define X_SERIAL_TX_PIN PE6
-#define Y_SERIAL_TX_PIN PE3
-#define Z_SERIAL_TX_PIN PB7
-#define E0_SERIAL_TX_PIN PB3
-#define E1_SERIAL_TX_PIN PD4
-#define E2_SERIAL_TX_PIN PD0
-#define E3_SERIAL_TX_PIN PD15
-#define E4_SERIAL_TX_PIN PD11
+#define Z_SERIAL_TX_PIN PE3
+#define Y_SERIAL_TX_PIN PB7
+#define Z2_SERIAL_TX_PIN PB3
+#define Z3_SERIAL_TX_PIN PD4
+#define Z4_SERIAL_TX_PIN PD0
+#define E0_SERIAL_TX_PIN PD15
+#define E1_SERIAL_TX_PIN PD11
 
 // Reduce baud rate to improve software serial reliability
 #ifndef TMC_BAUD_RATE
